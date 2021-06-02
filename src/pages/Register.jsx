@@ -1,9 +1,14 @@
 import { TextField, Typography, Button, Box, Grid} from "@material-ui/core"
-import { useState } from "react"
+import { useState, forwardRef } from "react"
 import { useHistory } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
-import Key from '@material-ui/icons/VpnKey';
-import LockIcon from '@material-ui/icons/Lock';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -30,14 +35,24 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Login = () => {
+const Transition = forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
+
+const Register = () => {
+    const [user, setUser] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [open, setOpen] = useState(false);
     const history = useHistory()
 
     const handleSubmit = event => {
         event.preventDefault()
-        history.push('/Dashboard')
+        setOpen(true)
+    }
+
+    const handleClose = () => {
+        setOpen(false)
     }
 
     const classes = useStyles();
@@ -47,11 +62,21 @@ const Login = () => {
             <Grid item xs={false} sm={4} md={7} className={classes.image} />
             <Grid item xs={12} sm={8} md={5}>
                 <div className={classes.paper}>
-                    <img alt="super-hero" src="superhero4.png"></img>
+                    <img alt="super-hero" src="strenght.png"></img>
                     <Typography component="h1">
-                        Sign in
+                        Sign up
                     </Typography>
                     <form className={classes.form} noValidate onSubmit={handleSubmit}>
+                    <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="user"
+                            label="User"
+                            name="user"
+                            autoComplete="user"
+                            onChange={event => setUser(event.target.value)} />
                         <TextField
                             variant="outlined"
                             margin="normal"
@@ -79,25 +104,35 @@ const Login = () => {
                             variant="contained"
                             color="secondary"
                             className={classes.submit} 
-                            startIcon={<Key />}
+                            startIcon={<LockOpenIcon />}
                             >
-                            GO GO GO !
+                            GO NOW !
                         </Button>
-                        <Typography component="h1" style={{textAlign: "center"}} >
-                            OR
-                        </Typography>
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="secondary"
-                            className={classes.submit}
-                            startIcon={<LockIcon />}
-                            onClick={() => history.push('/Register') }
-                            >
-                            Sign UP
-                        </Button>
-                        <Box mt={5}>
+                        <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Let Google help apps determine location. This means sending anonymous location data to
+            Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Disagree
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
+                        <Box>
                             <Typography variant="body2" color="textSecondary" align="center">
                                 Copyright © Heroes Skills {new Date().getFullYear()}
                             </Typography>
@@ -109,4 +144,4 @@ const Login = () => {
     );
 }
 
-export default Login
+export default Register
