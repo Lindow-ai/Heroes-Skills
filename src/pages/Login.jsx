@@ -77,6 +77,7 @@ const Login = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
+                            style={{ background: "#ED1D24"}}
                             color="secondary"
                             className={classes.submit}
                             startIcon={<Key />}
@@ -90,6 +91,7 @@ const Login = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
+                            style={{ background: "#ED1D24"}}
                             color="secondary"
                             className={classes.submit}
                             startIcon={<LockIcon />}

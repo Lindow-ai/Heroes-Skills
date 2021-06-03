@@ -117,6 +117,7 @@ const Register = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
+                            style={{ background: "#ED1D24"}}
                             color="secondary"
                             className={classes.submit}
                             startIcon={<LockOpenIcon />}
@@ -166,7 +167,7 @@ const Register = () => {
                                             <img alt="super-hero" src="superhero4.png" />
                             </DialogContent>
                             <DialogActions>
-                                <Button onClick={handleClose} color="primary">
+                                <Button onClick={handleClose}   color="primary" >
                                     Disagree
           </Button>
                                 <Button onClick={handleConfirm} color="primary">
