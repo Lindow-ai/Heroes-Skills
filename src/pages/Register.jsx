@@ -1,4 +1,4 @@
-import { TextField, Typography, Button, Box, Grid, IconButton, Paper } from "@material-ui/core"
+import { TextField, Typography, Button, Box, Grid, IconButton } from "@material-ui/core"
 import { useState, forwardRef } from "react"
 import { useHistory } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,7 +6,6 @@ import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -26,7 +25,7 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.text.secondary,
     },
     image: {
-        backgroundImage: 'url(https://i.pinimg.com/originals/f1/a8/67/f1a867e4ba5ef1ffa282fed29e14f663.jpg)',
+        backgroundImage: 'url(https://images6.alphacoders.com/416/416955.jpg)',
         backgroundRepeat: 'no-repeat',
         backgroundColor: theme.palette.grey[50],
         backgroundSize: 'cover',

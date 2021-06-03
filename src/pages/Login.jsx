@@ -1,4 +1,4 @@
-import { TextField, Typography, Button, Box, Grid} from "@material-ui/core"
+import { TextField, Typography, Button, Box, Grid } from "@material-ui/core"
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
         height: '100vh',
     },
     image: {
-        backgroundImage: 'url(https://i.pinimg.com/originals/f1/a8/67/f1a867e4ba5ef1ffa282fed29e14f663.jpg)',
+        backgroundImage: 'url(https://i.imgur.com/s4eS1Zz.png)',
         backgroundRepeat: 'no-repeat',
         backgroundColor: theme.palette.grey[50],
         backgroundSize: 'cover',
@@ -78,12 +78,12 @@ const Login = () => {
                             fullWidth
                             variant="contained"
                             color="secondary"
-                            className={classes.submit} 
+                            className={classes.submit}
                             startIcon={<Key />}
-                            >
+                        >
                             GO GO GO !
                         </Button>
-                        <Typography component="h1" style={{textAlign: "center"}} >
+                        <Typography component="h1" style={{ textAlign: "center" }} >
                             OR
                         </Typography>
                         <Button
@@ -93,8 +93,8 @@ const Login = () => {
                             color="secondary"
                             className={classes.submit}
                             startIcon={<LockIcon />}
-                            onClick={() => history.push('/Register') }
-                            >
+                            onClick={() => history.push('/Register')}
+                        >
                             Sign UP
                         </Button>
                         <Box mt={5}>
@@ -105,7 +105,7 @@ const Login = () => {
                     </form>
                 </div>
             </Grid>
-      </Grid>
+        </Grid>
     );
 }
 
