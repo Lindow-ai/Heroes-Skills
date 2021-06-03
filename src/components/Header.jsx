@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,10 +10,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import Message from '@material-ui/icons/Message'
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { orange } from '@material-ui/core/colors';
+import ReactMaterialUiNotifications from 'react-materialui-notifications'
+import { useHistory } from "react-router-dom"
+import moment from 'moment'
 
 import { createMuiTheme } from '@material-ui/core/styles';
 
@@ -94,8 +96,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const history = useHistory()
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [counter, setCounter] = useState(0)
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -117,6 +122,20 @@ const Header = () => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const showPersonalisedNotification = () => {
+    setCounter(counter + 1)
+    ReactMaterialUiNotifications.showNotification({
+      title: 'Title',
+      additionalText: `Some message to be displayed ${counter}`,
+      icon: <Message />,
+      iconBadgeColor: orange,
+      overflowText: "me@gmail.com",
+      timestamp: moment().format('h:mm A'),
+      personalised: true,
+      avatar: "demo.png"
+    })
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -128,7 +147,7 @@ const Header = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={() => history.push('/Profile')}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
@@ -145,17 +164,17 @@ const Header = () => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
+        <IconButton onClick={() => history.push('/Store')} aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="secondary">
-            <MailIcon />
+            <img alt="shopping" src="shopping-black.svg" />          
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>Store</p>
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
+            <img alt="notification" src="cloche-black.svg" />
           </Badge>
         </IconButton>
         <p>Notifications</p>
@@ -167,7 +186,7 @@ const Header = () => {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <img alt="profile" src="profile-black.svg" />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -204,12 +223,12 @@ const Header = () => {
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
+            <IconButton onClick={() => history.push('/Store')} aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
                   <img alt="shopping" src="shopping.svg" />
               </Badge>
             </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
+            <IconButton onClick={showPersonalisedNotification} aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
               <img alt="notification" src="cloche2.svg" />
               </Badge>
