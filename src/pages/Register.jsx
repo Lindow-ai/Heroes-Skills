@@ -1,4 +1,4 @@
-import { TextField, Typography, Button, Box, Grid} from "@material-ui/core"
+import { TextField, Typography, Button, Box, Grid, IconButton, Paper } from "@material-ui/core"
 import { useState, forwardRef } from "react"
 import { useHistory } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,10 +9,21 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+
 
 const useStyles = makeStyles(theme => ({
     root: {
         height: '100vh',
+    },
+    bow: {
+        flexGrow: 1,
+    },
+    gird: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
     },
     image: {
         backgroundImage: 'url(https://i.pinimg.com/originals/f1/a8/67/f1a867e4ba5ef1ffa282fed29e14f663.jpg)',
@@ -37,7 +48,7 @@ const useStyles = makeStyles(theme => ({
 
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
-  });
+});
 
 const Register = () => {
     const [user, setUser] = useState("")
@@ -55,6 +66,11 @@ const Register = () => {
         setOpen(false)
     }
 
+    const handleConfirm = event => {
+        event.preventDefault()
+        history.push('/Dashboard')
+    }
+
     const classes = useStyles();
 
     return (
@@ -67,7 +83,7 @@ const Register = () => {
                         Sign up
                     </Typography>
                     <form className={classes.form} noValidate onSubmit={handleSubmit}>
-                    <TextField
+                        <TextField
                             variant="outlined"
                             margin="normal"
                             required
@@ -103,35 +119,62 @@ const Register = () => {
                             fullWidth
                             variant="contained"
                             color="secondary"
-                            className={classes.submit} 
+                            className={classes.submit}
                             startIcon={<LockOpenIcon />}
-                            >
+                        >
                             GO NOW !
                         </Button>
                         <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Disagree
+                            open={open}
+                            TransitionComponent={Transition}
+                            keepMounted
+                            onClose={handleClose}
+                            aria-labelledby="alert-dialog-slide-title"
+                            aria-describedby="alert-dialog-slide-description"
+                        >
+                            <DialogTitle id="alert-dialog-slide-title">{"Creation of the hero"}</DialogTitle>
+                            <DialogContent>
+                                <IconButton style={{top: "75px"}} >
+                                            <ArrowBackIosIcon />
+                                        </IconButton>
+                                        <IconButton style={{top: "75px", left: "460px" }} >
+                                            <ArrowForwardIosIcon/>
+                                        </IconButton>
+                                <IconButton style={{top: "200px", right: "95px"}} >
+                                            <ArrowBackIosIcon />
+                                </IconButton>
+                                <IconButton style={{top: "200px", left: "365px" }} >
+                                            <ArrowForwardIosIcon/>
+                                        </IconButton>
+                                <IconButton style={{top: "315px", right: "190px"}} >
+                                            <ArrowBackIosIcon />
+                                </IconButton>
+                                <IconButton style={{top: "315px", left: "270px" }} >
+                                            <ArrowForwardIosIcon/>
+                                        </IconButton>
+                                <IconButton style={{top: "425px", right: "285px"}} >
+                                            <ArrowBackIosIcon />
+                                </IconButton>
+                                <IconButton style={{top: "425px", left: "175px" }} >
+                                            <ArrowForwardIosIcon/>
+                                        </IconButton>
+                                <IconButton style={{top: "525px", right: "380px"}} >
+                                            <ArrowBackIosIcon />
+                                </IconButton>
+                                <IconButton style={{top: "525px", left: "80px" }} >
+                                            <ArrowForwardIosIcon/>
+                                        </IconButton>
+                                            <img alt="super-hero" src="superhero4.png" />
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleClose} color="primary">
+                                    Disagree
           </Button>
-          <Button onClick={handleClose} color="primary">
-            Agree
+                                <Button onClick={handleConfirm} color="primary">
+                                    Agree
           </Button>
-        </DialogActions>
-      </Dialog>
+                            </DialogActions>
+                        </Dialog>
                         <Box>
                             <Typography variant="body2" color="textSecondary" align="center">
                                 Copyright © Heroes Skills {new Date().getFullYear()}
@@ -140,7 +183,7 @@ const Register = () => {
                     </form>
                 </div>
             </Grid>
-      </Grid>
+        </Grid>
     );
 }
 
