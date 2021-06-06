@@ -175,7 +175,7 @@ const Register = () => {
           </Button>
                             </DialogActions>
                         </Dialog>
-                        <Box>
+                        <Box mt={3}>
                             <Typography variant="body2" color="textSecondary" align="center">
                                 Copyright © Heroes Skills {new Date().getFullYear()}
                             </Typography>

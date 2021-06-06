@@ -19,6 +19,9 @@ import moment from 'moment'
 
 import { createMuiTheme } from '@material-ui/core/styles';
 
+const drawerWidth = 240;
+
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -57,6 +60,10 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(3),
       width: 'auto',
     },
+  },
+  appBar: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginRight: drawerWidth,
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -195,7 +202,7 @@ const Header = () => {
 
   return (
     <div className={classes.grow}>
-      <AppBar style={{ background: "#202020" }} position="static">
+      <AppBar style={{ background: "#202020" }} position="static" >
         <Toolbar>
           <IconButton
             edge="start"

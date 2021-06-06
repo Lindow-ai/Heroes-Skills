@@ -36,11 +36,6 @@ const Media = ({ image, title, description, avatar, pseudo, date }) => {
         avatar={
           <Avatar aria-label="recipe" src={avatar} className={classes.avatar} />
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
         title={pseudo}
         subheader={date}
       />
