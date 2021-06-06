@@ -73,7 +73,7 @@ export default function ClippedDrawer() {
           <List>
             <ListItem button onClick={handleClick}>
               <ListItemIcon>
-                <img alt="course" src="./course1.svg" />
+                <img alt="course" src="./book.svg" />
               </ListItemIcon>
               <ListItemText primary="Course" />
               {open ? <ExpandLess /> : <ExpandMore /> }
@@ -81,16 +81,29 @@ export default function ClippedDrawer() {
             <Collapse in={open} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 <ListItem button className={classes.nested} >
-                  <ListItemIcon>
-
-                  </ListItemIcon>
+                  <ListItemText primary="1) Presentation" />
+                </ListItem>
+                <ListItem button className={classes.nested} >
+                  <ListItemText primary="2) How to hack time ?" />
+                </ListItem>
+                <ListItem button className={classes.nested} >
+                  <ListItemText primary="3) Third" />
+                </ListItem>
+                <ListItem button className={classes.nested} >
+                  <ListItemText primary="4) Fourth" />
+                </ListItem>
+                <ListItem button className={classes.nested} >
+                  <ListItemText primary="5) Onhovered item" />
+                </ListItem>
+                <ListItem button className={classes.nested} >
+                  <ListItemText primary="6) Number Five" />
                 </ListItem>
               </List>
             </Collapse>
           </List>
           <Divider />
           <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+            {['All files', 'Contact trainer'].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                 <ListItemText primary={text} />
