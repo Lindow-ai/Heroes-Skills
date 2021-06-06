@@ -2,14 +2,6 @@ import Header from '../components/Header'
 import Media from "../components/Media";
 import Grid  from "@material-ui/core/Grid";
 import Box  from "@material-ui/core/Box";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles({
-  gridContainer: {
-    paddingLeft: "40px",
-    paddingRight: "40px"
-  }
-});
 
 const mediaCards = 
 [
@@ -129,7 +121,6 @@ const mediaCards =
 ]
 
 export const Dashboard = () => {    
-    const classes = useStyles();
     return (
         <>
         <Header />

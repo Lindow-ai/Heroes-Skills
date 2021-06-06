@@ -50,9 +50,9 @@ const Transition = forwardRef(function Transition(props, ref) {
 });
 
 const Register = () => {
-    const [user, setUser] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [, setUser] = useState("")
+    const [, setEmail] = useState("")
+    const [, setPassword] = useState("")
     const [open, setOpen] = useState(false);
     const history = useHistory()
 

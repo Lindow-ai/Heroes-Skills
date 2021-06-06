@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import ReactPlayer from 'react-player/youtube'
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Header from '../components/Header'

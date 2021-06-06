@@ -31,8 +31,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Login = () => {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [, setEmail] = useState("")
+    const [, setPassword] = useState("")
     const history = useHistory()
 
     const handleSubmit = event => {

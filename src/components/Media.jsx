@@ -9,7 +9,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
-import { red } from '@material-ui/core/colors';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useHistory } from "react-router-dom"
@@ -35,6 +34,11 @@ const Media = ({ image, title, description, avatar, pseudo, date }) => {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" src={avatar} className={classes.avatar} />
+        }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
         }
         title={pseudo}
         subheader={date}
