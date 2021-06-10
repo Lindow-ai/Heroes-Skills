@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Header from '../components/Header'
@@ -71,16 +72,17 @@ const getSteps = () => {
 const getStepContent = (step) => {
   switch(step) {
     case 0:
-      return <Typography paragraph>test 
-sdsqd
-      </Typography>;
+      return <Typography>Récompense : 20 exp <img src="flash.svg" alt="flash"></img></Typography>;
     case 1:
-      return 'An ad group contains one or more ads which target a shared set of keywords.';
+      return <Typography> Récompense : 50 exp <img src="flash.svg" alt="flash"></img>, <br /> <Typography style={{color:"#64C37D"}} >Titre : Voyageur du temps</Typography></Typography>;
     case 2:
-      return `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`;
+      return <Typography>Récompense : 20 exp <img src="flash.svg" alt="flash"></img></Typography>;
+    case 3:
+      return <Typography>Récompense : 20 exp <img src="flash.svg" alt="flash"></img></Typography>;
+    case 4:
+      return <Typography>Récompense : 20 exp <img src="flash.svg" alt="flash"></img></Typography>;
+    case 5:
+      return <Typography> Récompense : 100 exp <img src="flash.svg" alt="flash"></img>, <br /> <Typography style={{color:"#FF2626"}} >Titre : Hackerman</Typography></Typography> ;
     default:
       return 'Unknown step';
   }
@@ -91,11 +93,18 @@ export default function ClippedDrawer() {
   const [open, setOpen] = useState(true);
   const [activeStep, setActiveStep] = React.useState(0);
   const classes = useStyles();
+  const history = useHistory()
   const steps = getSteps();
 
 
+
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if(activeStep !== 5) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
+    else {
+      history.push('./Profile')
+    }
   };
 
   const handleBack = () => {
